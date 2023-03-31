@@ -109,9 +109,11 @@ public class CarService {
     public float getLeaseRate(Long id) {
         Optional<Car> optionalCar = carRepository.findById(id);
         if (optionalCar.isPresent()) {
-            return (((optionalCar.get().getMileage() / 12) * optionalCar.get().getDuration()) /
-                    optionalCar.get().getNettPrice()) + (((optionalCar.get().getInterestRate() / 100) *
-                    optionalCar.get().getNettPrice()) / 12);
+            float mileage = optionalCar.get().getMileage();
+            int duration = optionalCar.get().getDuration();
+            float nettPrice = (optionalCar.get().getNettPrice() == 0)? 1 : optionalCar.get().getNettPrice();
+            float interestRate = optionalCar.get().getInterestRate();
+            return (((mileage / 12) * duration) / nettPrice) + (((interestRate / 100) * nettPrice) / 12);
         } else {
             return -1; // not found
         }
