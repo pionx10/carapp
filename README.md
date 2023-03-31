@@ -3,7 +3,7 @@ Car app is a Car Lease Platform API. It is a Spring Boot backend application mad
 
 ## What does the API do
 * Keeps records of both customers and cars.
-* Calculates interest rate for cars.
+* Calculates lease rate for cars.
 * Loads CSV records to its database.
 
 ## Who are the end users for this API
